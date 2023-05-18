@@ -11,6 +11,7 @@ module.exports = {
         sans: 'var(--font-roboto)',
         alt: 'var(--font-baijamjuree)',
       },
+
       colors: {
         gray: {
           50: '#eaeaea',
@@ -48,6 +49,10 @@ module.exports = {
           800: '#027435',
           900: '#025929',
         },
+      },
+
+      blur: {
+        full: '194px',
       },
     },
   },
