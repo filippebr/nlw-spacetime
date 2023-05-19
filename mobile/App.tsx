@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar'
-import { ImageBackground, Text } from 'react-native'
+import { ImageBackground } from 'react-native'
 
 import {
   Roboto_400Regular,
@@ -9,7 +9,11 @@ import {
 
 import { BaiJamjuree_700Bold } from '@expo-google-fonts/bai-jamjuree'
 
+import { styled } from 'nativewind'
 import blurBg from './src/assets/bg-blur.png'
+import Stripes from './src/assets/stripes.svg'
+
+const StylesStripes = styled(Stripes)
 
 export default function App() {
   const [hasLoadedFonts] = useFonts({
@@ -28,7 +32,7 @@ export default function App() {
       className="relative flex-1 items-center bg-gray-900"
       imageStyle={{ position: 'absolute', left: '-100%' }}
     >
-      <Text className="font-title text-5xl text-gray-50"></Text>
+      <StylesStripes className="absolute left-2" />
       <StatusBar style="light" translucent />
     </ImageBackground>
   )
