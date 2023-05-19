@@ -15,6 +15,7 @@ import { styled } from 'nativewind'
 import blurBg from './src/assets/bg-blur.png'
 import NLWLogo from './src/assets/nlw-spacetime-logo.svg'
 import Stripes from './src/assets/stripes.svg'
+import { api } from './src/lib/api'
 
 const StylesStripes = styled(Stripes)
 
@@ -53,7 +54,15 @@ export default function App() {
     if (response?.type === 'success') {
       const { code } = response.params
 
-      console.log(code)
+      api
+        .post('/register', {
+          code,
+        })
+        .then((response) => {
+          const { token } = response.data
+
+          console.log(token)
+        })
     }
   }, [response])
 
