@@ -1,5 +1,8 @@
 import { makeRedirectUri, useAuthRequest } from 'expo-auth-session'
+import { useRouter } from 'expo-router'
+import * as SecureStore from 'expo-secure-store'
 import { StatusBar } from 'expo-status-bar'
+import { styled } from 'nativewind'
 import { useEffect } from 'react'
 import { ImageBackground, Text, TouchableOpacity, View } from 'react-native'
 
@@ -11,11 +14,10 @@ import {
 
 import { BaiJamjuree_700Bold } from '@expo-google-fonts/bai-jamjuree'
 
-import { styled } from 'nativewind'
-import blurBg from './src/assets/bg-blur.png'
-import NLWLogo from './src/assets/nlw-spacetime-logo.svg'
-import Stripes from './src/assets/stripes.svg'
-import { api } from './src/lib/api'
+import blurBg from '../src/assets/bg-blur.png'
+import NLWLogo from '../src/assets/nlw-spacetime-logo.svg'
+import Stripes from '../src/assets/stripes.svg'
+import { api } from '../src/lib/api'
 
 const StylesStripes = styled(Stripes)
 
@@ -27,13 +29,15 @@ const discovery = {
 }
 
 export default function App() {
+  const router = useRouter()
+
   const [hasLoadedFonts] = useFonts({
     Roboto_400Regular,
     Roboto_700Bold,
     BaiJamjuree_700Bold,
   })
 
-  const [request, response, signInWithGithub] = useAuthRequest(
+  const [, response, signInWithGithub] = useAuthRequest(
     {
       clientId: '8e0bd343a1094b794879',
       scopes: ['identity'],
@@ -43,6 +47,18 @@ export default function App() {
     },
     discovery,
   )
+
+  async function handleGithubOAuthCode(code: string) {
+    const response = await api.post('/register', {
+      code,
+    })
+
+    const { token } = response.data
+
+    await SecureStore.setItemAsync('token', token)
+
+    router.push('/memories')
+  }
 
   useEffect(() => {
     // console.log(
@@ -54,15 +70,7 @@ export default function App() {
     if (response?.type === 'success') {
       const { code } = response.params
 
-      api
-        .post('/register', {
-          code,
-        })
-        .then((response) => {
-          const { token } = response.data
-
-          console.log(token)
-        })
+      handleGithubOAuthCode(code)
     }
   }, [response])
 
