@@ -1,4 +1,4 @@
-import { Slot, SplashScreen } from 'expo-router'
+import { SplashScreen, Stack } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 import { styled } from 'nativewind'
 import { ImageBackground } from 'react-native'
@@ -35,7 +35,12 @@ export default function Layout() {
       <StylesStripes className="absolute left-2" />
       <StatusBar style="light" translucent />
 
-      <Slot />
+      <Stack
+        screenOptions={{
+          headerShown: false,
+          contentStyle: { backgroundColor: 'transparent' },
+        }}
+      />
     </ImageBackground>
   )
 }
