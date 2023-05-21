@@ -1,6 +1,7 @@
 import Icon from '@expo/vector-icons/Feather'
 import * as ImagePicker from 'expo-image-picker'
 import { Link } from 'expo-router'
+import * as SecureStore from 'expo-secure-store'
 import { useState } from 'react'
 import {
   Image,
@@ -14,6 +15,7 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import NLWLogo from '../src/assets/nlw-spacetime-logo.svg'
+import { api } from '../src/lib/api'
 
 export default function NewMemory() {
   const { bottom, top } = useSafeAreaInsets()
@@ -35,8 +37,34 @@ export default function NewMemory() {
     } catch (err) {}
   }
 
-  function handleCreateMemory() {
-    console.log(content, isPublic)
+  async function handleCreateMemory() {
+    const token = await SecureStore.getItemAsync('token')
+
+    let coverUrl = ''
+
+    if (preview) {
+      const uploadFormData = new FormData()
+
+      uploadFormData.append('file', {
+        uri: preview,
+        name: 'image.jpg',
+        type: 'image/jpeg',
+      } as any)
+
+      try {
+        const uploadResponse = await api.post('/upload', uploadFormData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+
+        coverUrl = uploadResponse.data.fileUrl
+
+        console.log(coverUrl)
+      } catch (err) {
+        console.error('Error occurred while making the API request:', err)
+      }
+    }
   }
 
   return (
@@ -92,6 +120,7 @@ export default function NewMemory() {
           multiline
           value={content}
           onChangeText={setContent}
+          textAlignVertical="top"
           className="p-0 font-body text-lg text-gray-50"
           placeholderTextColor="#56565a"
           placeholder="Fique livre para adicionar fotos, vídeos e relatos sobre essa experiência que você quer lembrar para sempre"
