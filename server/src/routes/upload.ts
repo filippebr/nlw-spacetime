@@ -42,6 +42,11 @@ export async function uploadRoutes(app: FastifyInstance) {
 
     const cloudPath = String(writeStream.path)
 
+    if (upload.file.truncated) {
+      fs.unlinkSync(cloudPath)
+      return reply.status(400).send(new app.multipartErrors.FilesLimitError())
+    }
+
     try {
       const urls = await cloudinaryUploadImg(cloudPath)
       fs.unlinkSync(cloudPath)
