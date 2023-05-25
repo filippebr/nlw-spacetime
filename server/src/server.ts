@@ -1,7 +1,6 @@
 import 'dotenv/config'
 
 import cors from '@fastify/cors'
-import fastifyFormBody from '@fastify/formbody'
 import jwt from '@fastify/jwt'
 import multipart from '@fastify/multipart'
 import fastify from 'fastify'
@@ -23,9 +22,6 @@ app.register(require('@fastify/static'), {
 app.register(cors, {
   origin: true, // with this option as true all URLs of frontend can access our backend, otherwise use a array to allow only the necessary
 })
-
-// New
-app.register(fastifyFormBody)
 
 app.register(jwt, {
   secret: 'spacetime',
