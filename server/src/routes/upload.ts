@@ -47,10 +47,15 @@ export async function uploadRoutes(app: FastifyInstance) {
       return reply.status(400).send(new app.multipartErrors.FilesLimitError())
     }
 
+    const fullUrl = request.protocol.concat('://').concat(request.hostname)
+    // const fileUrl = new URL(`/uploads/${fileName}`, fullUrl).toString()
+
     try {
-      const urls = await cloudinaryUploadImg(cloudPath)
+      const fileUrl = (await cloudinaryUploadImg(cloudPath)).url
+
       fs.unlinkSync(cloudPath)
-      return { urls }
+      // return { urls }
+      return { success: true, fileUrl, data: fullUrl }
     } catch (error) {
       fs.unlinkSync(cloudPath)
       return reply
