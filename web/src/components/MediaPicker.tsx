@@ -33,7 +33,7 @@ export function MediaPicker() {
         <img
           src={preview}
           alt=""
-          className="aspect-video w-full rounded-lg object-cover"
+          className="w-64 rounded-lg object-cover"
         />
       )}
     </>
