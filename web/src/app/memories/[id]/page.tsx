@@ -24,7 +24,7 @@ export default async function Memory({ params }: MemoryProps) {
 
   return (
     <div className="flex flex-col gap-10 p-8">
-      <h1>Memory: ${params.id}</h1>
+      <h1>Memory: {params.id}</h1>
     </div>
   )
 }
