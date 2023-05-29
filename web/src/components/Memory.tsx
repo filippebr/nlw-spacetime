@@ -38,7 +38,7 @@ export default function Memory({
           width={592}
           height={280}
           alt=""
-          className="w-64 rounded-lg object-cover"
+          className="w-auto rounded-lg object-cover"
         />
 
         <p className="text-lg leading-relaxed text-gray-100">{content}</p>
