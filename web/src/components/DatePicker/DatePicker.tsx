@@ -22,7 +22,6 @@ export const DatePicker: FC<dateProps> = ({}) => {
         <div className="flex gap-4"></div>
       ) : (
         <ReactCalendar
-          minDate={new Date()}
           className="REACT-CALENDAR p-2"
           view="month"
           onClickDay={(date) => console.log(date)}
