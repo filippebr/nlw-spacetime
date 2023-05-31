@@ -1,12 +1,11 @@
 'use client'
+import { DatePicker } from '@/components/DatePicker/DatePicker'
 import dayjs from 'dayjs'
 import ptBr from 'dayjs/locale/pt-br'
 import { ArrowLeft } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
-import { DatePicker } from './DatePicker/DatePicker'
-// import DatePicker from 'react-datepicker'
+// import { DatePicker } from './DatePicker/DatePicker'
 
 dayjs.locale(ptBr)
 
@@ -23,8 +22,6 @@ export default function Memory({
   content,
   createdAt,
 }: MemoryProps) {
-  const [date, setDate] = useState(dayjs())
-
   return (
     <div className="flex flex-col gap-10 p-8">
       <Link
@@ -38,7 +35,8 @@ export default function Memory({
         <time className="-ml-8 flex items-center gap-2 text-sm text-gray-100 before:h-px before:w-5 before:bg-gray-50">
           {dayjs(createdAt).format('D[ de ]MMMM[, ]YYYY')}
         </time>
-        <DatePicker selectedDate={date} onChange={setDate} />
+
+        <DatePicker />
 
         <Image
           src={coverUrl}

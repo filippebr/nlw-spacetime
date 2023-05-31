@@ -1,25 +1,33 @@
-import type { Dayjs } from 'dayjs'
-import { useState } from 'react'
-import { DatePickerCalendar } from './DatePickerCalendar'
-import { DatePickerSelector } from './DatePickerSelector'
+import { FC, useState } from 'react'
+import ReactCalendar from 'react-calendar'
 
-export interface IDatePickerProps {
-  selectedDate: Dayjs
-  onChange: (newDate: Dayjs) => void
+import './datePicker.css'
+
+interface dateProps {}
+
+interface DateType {
+  justDate: Date | null
+  dateTime: Date | null
 }
 
-export function DatePicker({ selectedDate, onChange }: IDatePickerProps) {
-  const [shownDate, setShownDate] = useState(selectedDate)
+export const DatePicker: FC<dateProps> = ({}) => {
+  const [date, setDate] = useState<DateType>({
+    justDate: null,
+    dateTime: null,
+  })
 
   return (
-    <div className="offset-x-0 offset-y-3 blur-8 w-44 border-r-0 p-1 text-white opacity-60 shadow">
-      <DatePickerSelector shownDate={shownDate} setShownDate={setShownDate} />
-
-      <DatePickerCalendar
-        selectedDate={selectedDate}
-        shownDate={shownDate}
-        onChange={onChange}
-      />
+    <div className="flex flex-col items-center justify-center">
+      {date.justDate ? (
+        <div className="flex gap-4"></div>
+      ) : (
+        <ReactCalendar
+          minDate={new Date()}
+          className="REACT-CALENDAR p-2"
+          view="month"
+          onClickDay={(date) => console.log(date)}
+        />
+      )}
     </div>
   )
 }
