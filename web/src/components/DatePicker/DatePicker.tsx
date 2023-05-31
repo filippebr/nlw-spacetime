@@ -17,7 +17,7 @@ export const DatePicker: FC<dateProps> = ({}) => {
   })
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-start">
       {date.justDate ? (
         <div className="flex gap-4"></div>
       ) : (
