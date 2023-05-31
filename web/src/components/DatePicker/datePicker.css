@@ -120,7 +120,7 @@
 */
 
 .react-calendar__month-view__weekdays__weekday {
-  padding: 0.75em;
+  padding: 0.3em;
 }
 .react-calendar__month-view__weekdays__weekday abbr {
   text-decoration: none;
