@@ -17,10 +17,7 @@ export default function DropdownMenu({ createdAt }: DropdownMenuProps) {
       <Menu.Items>
         <Menu.Item>
           {({ active }) => (
-            <a
-              className={`${active && 'bg-blue-500'}`}
-              href="/account-settings"
-            >
+            <a className={`${active && 'bg-blue-500'}`} href="">
               <DatePicker />
             </a>
           )}
