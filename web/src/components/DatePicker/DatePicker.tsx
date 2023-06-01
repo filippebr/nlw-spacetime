@@ -16,18 +16,24 @@ export const DatePicker: FC<dateProps> = ({}) => {
     dateTime: null,
   })
 
+  function getTime() {
+    if (!date.justDate) return
+
+    const { justDate } = date
+
+    return justDate
+  }
+
+  console.log(getTime())
+
   return (
     <div className="flex flex-col items-start">
-      {date.justDate ? (
-        <div className="flex gap-4"></div>
-      ) : (
-        <ReactCalendar
-          locale="pt-BR"
-          className="REACT-CALENDAR p-2"
-          view="month"
-          onClickDay={(date) => console.log(date)}
-        />
-      )}
+      <ReactCalendar
+        locale="pt-BR"
+        className="REACT-CALENDAR p-2"
+        view="month"
+        onClickDay={(date) => setDate((prev) => ({ ...prev, justDate: date }))}
+      />
     </div>
   )
 }

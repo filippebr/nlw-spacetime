@@ -17,12 +17,12 @@ export default function DropdownMenu({ createdAt }: DropdownMenuProps) {
       </Menu.Button>
       <Transition
         as={Fragment}
-        enter="transition duration-200 ease-out"
-        enterFrom="transform scale-95 opacity-0"
+        enter="transition duration-150 ease-out"
+        enterFrom="transform scale-75 opacity-0"
         enterTo="transform scale-100 opacity-100"
-        leave="transition duration-150 ease-out"
+        leave="transition duration-75 ease-out"
         leaveFrom="transform scale-100 opacity-100"
-        leaveTo="transform scale-95 opacity-0"
+        leaveTo="transform scale-75 opacity-0"
       >
         <Menu.Items>
           <DatePicker />
