@@ -8,20 +8,30 @@ interface DateType {
   dateTime: Date | null
 }
 
-type DatePickerProps = {}
+type DatePickerProps = {
+  params: {
+    id: string
+  }
+}
 
-export function DatePicker(props: DatePickerProps) {
+export function DatePicker({ params }: DatePickerProps) {
   const [date, setDate] = useState<DateType>({
     justDate: null,
     dateTime: null,
   })
 
-  function getTime() {
+  async function getTime() {
     if (!date.justDate) return
 
     const { justDate } = date
 
-    return justDate
+    // await api.put(`/memories/${params.id}`, {
+    //   createdAt: justDate,
+    // })
+
+    const convertedDate = justDate.toISOString()
+
+    return convertedDate
   }
 
   console.log(getTime())
