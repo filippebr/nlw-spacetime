@@ -1,3 +1,4 @@
+'use client'
 // import { cookies } from 'next/headers'
 import { useState } from 'react'
 import ReactCalendar from 'react-calendar'
@@ -13,22 +14,24 @@ interface DateType {
 
 type DatePickerProps = {
   id: string
+  token: string | undefined
 }
 
-export function DatePicker({ id }: DatePickerProps) {
+export function DatePicker({ id, token }: DatePickerProps) {
   const [date, setDate] = useState<DateType>({
-    justDate: null,
+    justDate: new Date(),
     dateTime: null,
   })
 
   async function getTime() {
+    console.log('Just date:', date.justDate)
     if (!date.justDate) return
 
     const { justDate } = date
 
     // const token = cookies().get('token')?.value
 
-    // console.log(token)
+    console.log('Token DatePicker: ', token)
 
     try {
       await api.put(
@@ -36,11 +39,11 @@ export function DatePicker({ id }: DatePickerProps) {
         {
           createdAt: justDate.toISOString(),
         },
-        // {
-        //   headers: {
-        //     Authorization: `Bearer ${token}`,
-        //   },
-        // },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
       )
 
       return justDate

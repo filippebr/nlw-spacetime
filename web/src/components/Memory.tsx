@@ -14,6 +14,7 @@ interface MemoryProps {
   coverUrl: string
   content: string
   createdAt: string
+  token: string | undefined
 }
 
 export default function Memory({
@@ -21,6 +22,7 @@ export default function Memory({
   coverUrl,
   content,
   createdAt,
+  token,
 }: MemoryProps) {
   return (
     <div className="flex flex-col gap-10 p-8">
@@ -32,7 +34,7 @@ export default function Memory({
         <ArrowLeft className="h-4 w-4" />
       </Link>
       <div key={id} className="space-y-4">
-        <DropdownMenu createdAt={createdAt} id={id} />
+        <DropdownMenu token={token} createdAt={createdAt} id={id} />
 
         <Image
           src={coverUrl}

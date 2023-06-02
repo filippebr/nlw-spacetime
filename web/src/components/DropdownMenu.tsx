@@ -6,9 +6,14 @@ import { DatePicker } from './DatePicker/DatePicker'
 interface DropdownMenuProps {
   id: string
   createdAt: string
+  token: string | undefined
 }
 
-export default function DropdownMenu({ createdAt, id }: DropdownMenuProps) {
+export default function DropdownMenu({
+  createdAt,
+  id,
+  token,
+}: DropdownMenuProps) {
   return (
     <Menu>
       <Menu.Button>
@@ -26,7 +31,7 @@ export default function DropdownMenu({ createdAt, id }: DropdownMenuProps) {
         leaveTo="transform scale-75 opacity-0"
       >
         <Menu.Items>
-          <DatePicker id={id} />
+          <DatePicker token={token} id={id} />
         </Menu.Items>
       </Transition>
     </Menu>

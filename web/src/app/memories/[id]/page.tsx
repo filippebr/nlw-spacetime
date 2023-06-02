@@ -16,12 +16,12 @@ interface MemoryProps {
 export default async function PageMemory({ params }: MemoryProps) {
   const isAuthenticated = cookies().has('token')
 
-  console.log(isAuthenticated)
-
   if (!isAuthenticated) {
     return <EmptyMemories />
   }
   const token = cookies().get('token')?.value
+
+  console.log('memories Page', token)
 
   const memory = await api.get(`/memories/${params.id}`, {
     headers: {
@@ -33,6 +33,7 @@ export default async function PageMemory({ params }: MemoryProps) {
 
   return (
     <Memory
+      token={token}
       id={id}
       coverUrl={coverUrl}
       content={content}
