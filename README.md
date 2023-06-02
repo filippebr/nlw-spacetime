@@ -2,31 +2,24 @@ Nlw Spacetime, uma aplicação para armazenar memórias criadas pelo usuário, e
 
 <h1 align="center"><img src="web/src/assets/nlw-spacetime-logo.svg" width="420px" /></h1>
 
+## Tecnologias
 
-## Caso de uso
+Tecnologias utilizadas
 
-* 
+* HTML
+* CSS
+* Javascript
+* Typescript
+* Tailwind
+* Nextjs
 
-## Developers
+## Casos de uso
 
-
-## Documentation
-
-
-## Report a bug
-
-
-## Translations
-
-
-## Dependencies
-
-
-## Launch
-
-
-## Websites
-
+* Registrar usuário com o uso do github OAuth
+* Clicar em um link e poder criar uma memória adicionando a data atual, se será pública ou não, uma imagem/vídeo e um texto
+* Mostrar uma seção onde mostre todas as memórias criadas por esse usuário
+* Ao clicar Ler mais... em uma memória mostrar uma seção da memória escolhida
+* Na seção da memória escolhida mostrar a data a qual a memória foi criada a imagem/vídeo dessa memória, e um texto completo
 
 ### Licença 
 
