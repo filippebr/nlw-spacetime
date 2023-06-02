@@ -4,10 +4,11 @@ import { Fragment } from 'react'
 import { DatePicker } from './DatePicker/DatePicker'
 
 interface DropdownMenuProps {
+  id: string
   createdAt: string
 }
 
-export default function DropdownMenu({ createdAt }: DropdownMenuProps) {
+export default function DropdownMenu({ createdAt, id }: DropdownMenuProps) {
   return (
     <Menu>
       <Menu.Button>
@@ -25,7 +26,7 @@ export default function DropdownMenu({ createdAt }: DropdownMenuProps) {
         leaveTo="transform scale-75 opacity-0"
       >
         <Menu.Items>
-          <DatePicker />
+          <DatePicker id={id} />
         </Menu.Items>
       </Transition>
     </Menu>

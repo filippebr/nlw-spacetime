@@ -16,6 +16,8 @@ interface MemoryProps {
 export default async function PageMemory({ params }: MemoryProps) {
   const isAuthenticated = cookies().has('token')
 
+  console.log(isAuthenticated)
+
   if (!isAuthenticated) {
     return <EmptyMemories />
   }

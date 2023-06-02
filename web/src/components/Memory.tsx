@@ -32,7 +32,7 @@ export default function Memory({
         <ArrowLeft className="h-4 w-4" />
       </Link>
       <div key={id} className="space-y-4">
-        <DropdownMenu createdAt={createdAt} />
+        <DropdownMenu createdAt={createdAt} id={id} />
 
         <Image
           src={coverUrl}
