@@ -4,19 +4,19 @@ Nlw Spacetime, uma aplicação para armazenar memórias criadas pelo usuário, e
 
 ## Executar na máquina local
   1. Instalar dependências
-  Dentro de cada pasta server/web/mobile 
-    → npm install
+  * Dentro de cada pasta server/web/mobile 
+    * → npm install
   2. Iniciar dev server
-  Dentro da pasta server
-    → npm run dev
+  * Dentro da pasta server
+    * → npm run dev
   3. Iniciar dev web
-  Dentro da pasta web
-    → npm run dev
+  * Dentro da pasta web
+    * → npm run dev
   4. Iniciar dev mobile
-  Dentro da pasta mobile
-    → npx expo start
-  Se precisar limpar o cache
-    → npx expo start --clear
+  * Dentro da pasta mobile
+    * → npx expo start
+  * Se precisar limpar o cache
+    * → npx expo start --clear
 
 ## Tecnologias
 
