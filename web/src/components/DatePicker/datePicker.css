@@ -1,10 +1,10 @@
 .react-calendar {
-  width: 245px;
+  width: 220px;
   max-width: 100%;
   background: #1f1f23;
   border-radius: 16px;
   border: 2px solid #ab8eee;
-  line-height: 1.125em;
+  line-height: 0.8em;
   opacity: 70%;
   box-shadow: #d8cbf7 4px 2px 10px;
 }
@@ -75,7 +75,7 @@
 }
 /* Each day should be round when hovered */
 .react-calendar__month-view__days__day {
-  padding: 5px;
+  padding: 4px;
   background-clip: content-box !important;
   border-radius: 15px !important;
   color: #f3eefc;
@@ -91,7 +91,7 @@
 
 .react-calendar__navigation__arrow {
   background-color: #fff;
-  padding: 7px;
+  padding: 8px;
   background-clip: content-box !important;
   border-radius: 50px;
   font-size: 1.25em;
@@ -145,6 +145,7 @@
   max-width: 100%;
   background: none;
   text-align: center;
+  font-weight: bold;
   font-size: 0.8em;
 }
 .react-calendar__tile:disabled {
@@ -154,10 +155,10 @@
 .react-calendar__tile:enabled:hover,
 .react-calendar__tile:enabled:focus {
   background-color: #ab8eee;
-  padding: 2px;
+  padding: 4px;
 }
 .react-calendar__tile--now {
-  border-radius: 15px;
+  border-radius: 50px;
   border: 2px solid #ab8eee !important;
   color: #ab8eee;
 }
@@ -165,6 +166,7 @@
 .react-calendar__tile--now:enabled:focus {
   background-color: #d8cbf7;
   color: #5c3ea3;
+  padding: 4px;
 }
 .react-calendar__tile--hasActive {
   background: #76baff;
