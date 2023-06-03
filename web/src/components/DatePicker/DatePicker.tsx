@@ -1,5 +1,4 @@
 'use client'
-// import { cookies } from 'next/headers'
 import { useState } from 'react'
 import ReactCalendar from 'react-calendar'
 
@@ -37,6 +36,11 @@ export function DatePicker({ id, token }: DatePickerProps) {
       await api.put(
         `/memories/${id}`,
         {
+          content: 'abc',
+          coverUrl:
+            'http://res.cloudinary.com/dcq0bdo1i/image/upload/v1685384931/nlw-spacetime/bgw09wrxbqstyeypkcjd.png',
+          id: '204bc21f-9b5a-4093-bc31-6d1e391cad17',
+          isPublic: false,
           createdAt: justDate.toISOString(),
         },
         {
