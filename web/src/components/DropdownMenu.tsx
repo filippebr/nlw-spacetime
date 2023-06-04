@@ -5,13 +5,17 @@ import { DatePicker } from './DatePicker/DatePicker'
 
 interface DropdownMenuProps {
   id: string
+  coverUrl: string
+  content: string
   createdAt: string
   token: string | undefined
 }
 
 export default function DropdownMenu({
-  createdAt,
   id,
+  coverUrl,
+  content,
+  createdAt,
   token,
 }: DropdownMenuProps) {
   return (
@@ -31,7 +35,13 @@ export default function DropdownMenu({
         leaveTo="transform scale-75 opacity-0"
       >
         <Menu.Items>
-          <DatePicker token={token} id={id} />
+          <DatePicker
+            id={id}
+            coverUrl={coverUrl}
+            content={content}
+            createdAt={createdAt}
+            token={token}
+          />
         </Menu.Items>
       </Transition>
     </Menu>

@@ -13,10 +13,19 @@ interface DateType {
 
 type DatePickerProps = {
   id: string
+  coverUrl: string
+  content: string
+  createdAt: string
   token: string | undefined
 }
 
-export function DatePicker({ id, token }: DatePickerProps) {
+export function DatePicker({
+  id,
+  coverUrl,
+  content,
+  createdAt,
+  token,
+}: DatePickerProps) {
   const [date, setDate] = useState<DateType>({
     justDate: new Date(),
     dateTime: null,
@@ -36,12 +45,11 @@ export function DatePicker({ id, token }: DatePickerProps) {
       await api.put(
         `/memories/${id}`,
         {
-          content: 'abc',
-          coverUrl:
-            'http://res.cloudinary.com/dcq0bdo1i/image/upload/v1685384931/nlw-spacetime/bgw09wrxbqstyeypkcjd.png',
-          id: '204bc21f-9b5a-4093-bc31-6d1e391cad17',
-          isPublic: false,
+          id,
+          content,
+          coverUrl,
           createdAt: justDate.toISOString(),
+          // createdAt: justDate.toISOString(),
         },
         {
           headers: {

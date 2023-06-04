@@ -34,7 +34,13 @@ export default function Memory({
         <ArrowLeft className="h-4 w-4" />
       </Link>
       <div key={id} className="space-y-4">
-        <DropdownMenu token={token} createdAt={createdAt} id={id} />
+        <DropdownMenu
+          id={id}
+          coverUrl={coverUrl}
+          content={content}
+          createdAt={createdAt}
+          token={token}
+        />
 
         <Image
           src={coverUrl}
