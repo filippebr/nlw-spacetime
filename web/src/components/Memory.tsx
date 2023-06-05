@@ -14,6 +14,7 @@ interface MemoryProps {
   coverUrl: string
   content: string
   createdAt: string
+  isPublic: boolean
   token: string | undefined
 }
 
@@ -22,6 +23,7 @@ export default function Memory({
   coverUrl,
   content,
   createdAt,
+  isPublic,
   token,
 }: MemoryProps) {
   return (
@@ -39,6 +41,7 @@ export default function Memory({
           coverUrl={coverUrl}
           content={content}
           createdAt={createdAt}
+          isPublic={isPublic}
           token={token}
         />
 

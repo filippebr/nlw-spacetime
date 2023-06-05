@@ -16,6 +16,7 @@ type DatePickerProps = {
   coverUrl: string
   content: string
   createdAt: string
+  isPublic: boolean
   token: string | undefined
 }
 
@@ -23,40 +24,39 @@ export function DatePicker({
   id,
   coverUrl,
   content,
-  createdAt,
+  isPublic,
   token,
 }: DatePickerProps) {
   const [date, setDate] = useState<DateType>({
-    justDate: new Date(),
+    justDate: null,
     dateTime: null,
   })
 
   async function getTime() {
-    console.log('Just date:', date.justDate)
     if (!date.justDate) return
 
     const { justDate } = date
 
+    console.log('justDate: ', justDate.toISOString())
+
     // const token = cookies().get('token')?.value
 
-    console.log('Token DatePicker: ', token)
+    const updatedMemoryData = {
+      coverUrl,
+      content,
+      isPublic,
+      createdAt: '2023-06-05T10:00:00Z', // Specify the new value for createdAt
+    }
 
     try {
-      await api.put(
-        `/memories/${id}`,
-        {
-          id,
-          content,
-          coverUrl,
-          createdAt: justDate.toISOString(),
-          // createdAt: justDate.toISOString(),
+      const response = await api.put(`/memories/${id}`, updatedMemoryData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-      )
+      })
+
+      console.log('data', response.data)
+      console.log('createdAt: ', response.data.createdAt)
 
       return justDate
     } catch (error) {
@@ -64,7 +64,7 @@ export function DatePicker({
     }
   }
 
-  console.log(getTime())
+  console.log('getTime: ', getTime())
 
   return (
     <div className="flex flex-col items-start">

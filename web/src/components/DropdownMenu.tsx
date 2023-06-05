@@ -8,6 +8,7 @@ interface DropdownMenuProps {
   coverUrl: string
   content: string
   createdAt: string
+  isPublic: boolean
   token: string | undefined
 }
 
@@ -16,6 +17,7 @@ export default function DropdownMenu({
   coverUrl,
   content,
   createdAt,
+  isPublic,
   token,
 }: DropdownMenuProps) {
   return (
@@ -40,6 +42,7 @@ export default function DropdownMenu({
             coverUrl={coverUrl}
             content={content}
             createdAt={createdAt}
+            isPublic={isPublic}
             token={token}
           />
         </Menu.Items>
