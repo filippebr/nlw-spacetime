@@ -29,7 +29,7 @@ export default async function PageMemory({ params }: MemoryProps) {
     },
   })
 
-  const { id, coverUrl, content, createdAt } = memory?.data
+  const { id, coverUrl, content, isPublic, createdAt } = memory?.data
 
   return (
     <Memory
@@ -37,6 +37,7 @@ export default async function PageMemory({ params }: MemoryProps) {
       id={id}
       coverUrl={coverUrl}
       content={content}
+      isPublic={isPublic}
       createdAt={createdAt}
     />
   )

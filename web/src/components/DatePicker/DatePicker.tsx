@@ -1,4 +1,5 @@
 'use client'
+import { format, formatISO, parseISO } from 'date-fns'
 import { useState } from 'react'
 import ReactCalendar from 'react-calendar'
 
@@ -37,16 +38,26 @@ export function DatePicker({
 
     const { justDate } = date
 
-    console.log('justDate: ', justDate.toISOString())
+    console.log('justDate', justDate)
+    console.log('type of justDate:', typeof parseISO(justDate.toString()))
 
     // const token = cookies().get('token')?.value
+
+    const formattedDate = format(justDate, "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+
+    console.log(formattedDate)
 
     const updatedMemoryData = {
       coverUrl,
       content,
       isPublic,
-      createdAt: '2023-06-05T10:00:00Z', // Specify the new value for createdAt
+      createdAt: formatISO(formattedDate), // Specify the new value for createdAt
     }
+
+    console.log(
+      'update memory data createdAt: ',
+      typeof updatedMemoryData.createdAt,
+    )
 
     try {
       const response = await api.put(`/memories/${id}`, updatedMemoryData, {
