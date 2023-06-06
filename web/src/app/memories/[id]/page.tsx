@@ -21,8 +21,6 @@ export default async function PageMemory({ params }: MemoryProps) {
   }
   const token = cookies().get('token')?.value
 
-  console.log('memories Page', token)
-
   const memory = await api.get(`/memories/${params.id}`, {
     headers: {
       Authorization: `Bearer ${token}`,
