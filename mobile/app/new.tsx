@@ -2,7 +2,7 @@ import Icon from '@expo/vector-icons/Feather'
 import * as ImagePicker from 'expo-image-picker'
 import { Link, useRouter } from 'expo-router'
 import * as SecureStore from 'expo-secure-store'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import {
   Image,
   ScrollView,

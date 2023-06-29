@@ -2,7 +2,7 @@ import { SplashScreen, Stack } from 'expo-router'
 import * as SecureStore from 'expo-secure-store'
 import { StatusBar } from 'expo-status-bar'
 import { styled } from 'nativewind'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ImageBackground } from 'react-native'
 
 import {

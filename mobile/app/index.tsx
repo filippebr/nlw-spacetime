@@ -1,7 +1,7 @@
 import { makeRedirectUri, useAuthRequest } from 'expo-auth-session'
 import { useRouter } from 'expo-router'
 import * as SecureStore from 'expo-secure-store'
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 
 import NLWLogo from '../src/assets/nlw-spacetime-logo.svg'

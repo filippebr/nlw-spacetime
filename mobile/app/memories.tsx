@@ -3,7 +3,7 @@ import dayjs from 'dayjs'
 import ptBr from 'dayjs/locale/pt-br'
 import { Link, useRouter } from 'expo-router'
 import * as SecureStore from 'expo-secure-store'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
